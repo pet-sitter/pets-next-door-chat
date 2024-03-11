@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5456:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pets_next_door_chat_demo
+    volumes:
+      - pg_pets_next_door_chat_db:/var/lib/postgresql/data
+    networks:
+      - pets_next_door_chat_demo
+
+volumes:
+  pg_pets_next_door_chat_db:
+
+networks:
+  pets_next_door_chat_demo:
+    driver: bridge
